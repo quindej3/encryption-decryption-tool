@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Encryption & Decryption Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Encryption & Decryption Tool</h1>
+    <p class="subtitle">Encrypt or decrypt messages using classic cipher methods</p>
+
+    <div class="mode-toggle">
+      <button onclick="setMode('encrypt')" id="btn-encrypt" class="active">Lock  Encrypt</button>
+      <button onclick="setMode('decrypt')" id="btn-decrypt">Unlock  Decrypt</button>
+    </div>
+
+    <div class="cipher-select">
+      <label>Cipher method</label>
+      <div class="cipher-pills">
+        <button onclick="setCipher('caesar')" id="c-caesar" class="pill active">Caesar</button>
+        <button onclick="setCipher('base64')" id="c-base64" class="pill">Base64</button>
+        <button onclick="setCipher('reverse')" id="c-reverse" class="pill">Reverse</button>
+        <button onclick="setCipher('rot13')" id="c-rot13" class="pill">ROT13</button>
+      </div>
+    </div>
+
+    <div id="shift-row" class="shift-row">
+      <label>Shift value</label>
+      <input type="range" min="1" max="25" value="3" id="shift-slider" oninput="document.getElementById('shift-val').textContent=this.value; processText()">
+      <span id="shift-val">3</span>
+    </div>
+
+    <div class="input-group">
+      <label id="input-label">Text to encrypt</label>
+      <textarea id="input-text" rows="4" placeholder="Type your message here..." oninput="processText()"></textarea>
+    </div>
+
+    <div class="output-box">
+      <div class="output-header">
+        <span id="output-label">Encrypted output</span>
+        <button onclick="copyOutput()" class="copy-btn">Copy</button>
+      </div>
+      <div id="output-text">—</div>
+    </div>
+
+    <div class="info-box">
+      <p class="info-title" id="cipher-title">How Caesar cipher works</p>
+      <p class="info-desc" id="cipher-desc">Shifts each letter in the alphabet by a fixed number of positions. For example, with shift 3: A becomes D, B becomes E. One of the oldest encryption techniques.</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
